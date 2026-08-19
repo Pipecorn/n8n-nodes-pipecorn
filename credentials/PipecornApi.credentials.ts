@@ -11,7 +11,10 @@ export class PipecornApi implements ICredentialType {
 
 	displayName = 'Pipecorn API';
 
-	icon: Icon = { light: 'file:pipecorn.svg', dark: 'file:pipecorn.dark.svg' };
+	icon: Icon = {
+		light: 'file:../nodes/Pipecorn/pipecorn.svg',
+		dark: 'file:../nodes/Pipecorn/pipecorn.dark.svg',
+	};
 
 	documentationUrl = 'https://github.com/Pipecorn/n8n-nodes-pipecorn?tab=readme-ov-file#credentials';
 
