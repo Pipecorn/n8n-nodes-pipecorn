@@ -1,5 +1,6 @@
 import type {
 	IAuthenticateGeneric,
+	Icon,
 	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
@@ -10,8 +11,9 @@ export class PipecornApi implements ICredentialType {
 
 	displayName = 'Pipecorn API';
 
-	// Link to your community node's README
-	documentationUrl = 'https://github.com/org/-pipecorn?tab=readme-ov-file#credentials';
+	icon: Icon = { light: 'file:pipecorn.svg', dark: 'file:pipecorn.dark.svg' };
+
+	documentationUrl = 'https://github.com/Pipecorn/n8n-nodes-pipecorn?tab=readme-ov-file#credentials';
 
 	properties: INodeProperties[] = [
 		{
@@ -21,6 +23,7 @@ export class PipecornApi implements ICredentialType {
 			typeOptions: { password: true },
 			required: true,
 			default: '',
+			description: 'Found in Pipecorn under Settings > API.',
 		},
 	];
 
@@ -35,8 +38,8 @@ export class PipecornApi implements ICredentialType {
 
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: 'https://api.pipecorn.com/v2',
-			url: '/v1/user',
+			baseURL: 'https://app.pipecorn.com/api/v2',
+			url: '/credits',
 		},
 	};
 }

@@ -1,6 +1,5 @@
 import { NodeConnectionTypes, type INodeType, type INodeTypeDescription } from 'n8n-workflow';
-import { userDescription } from './resources/user';
-import { companyDescription } from './resources/company';
+import { contactDescription } from './resources/contact';
 
 export class Pipecorn implements INodeType {
 	description: INodeTypeDescription = {
@@ -10,7 +9,7 @@ export class Pipecorn implements INodeType {
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
-		description: 'Interact with the Pipecorn API',
+		description: 'Enrich contacts with professional emails and phone numbers',
 		defaults: {
 			name: 'Pipecorn',
 		},
@@ -24,6 +23,10 @@ export class Pipecorn implements INodeType {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
 			},
+			// Enrichment runs a provider waterfall server-side with independent
+			// per-kind budgets (25s email + 30s phone), so a combined request can
+			// legitimately stay open for close to a minute.
+			timeout: 120000,
 		},
 		properties: [
 			{
@@ -33,18 +36,13 @@ export class Pipecorn implements INodeType {
 				noDataExpression: true,
 				options: [
 					{
-						name: 'User',
-						value: 'user',
-					},
-					{
-						name: 'Company',
-						value: 'company',
+						name: 'Contact',
+						value: 'contact',
 					},
 				],
-				default: 'user',
+				default: 'contact',
 			},
-			...userDescription,
-			...companyDescription,
+			...contactDescription,
 		],
 	};
 }
