@@ -5,7 +5,7 @@
   "license": "MIT",
   "homepage": "https://pipecorn.com",
   "keywords": ["n8n-community-node-package"],
-  "author": { "name": "Pierre Aillet", "email": "pierr611@gmail.com" },
+  "author": { "name": "Pierre Aillet", "email": "pierre@pipecorn.com" },
   "repository": {
     "type": "git",
     "url": "https://github.com/Pipecorn/n8n-nodes-pipecorn.git"
